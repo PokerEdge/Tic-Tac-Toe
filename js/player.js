@@ -2,9 +2,8 @@ function Player(name) {
   this.name = name;
   var isActive = false;
 
-  var squares = [11, 11, 11,
-                11, 11, 11,
-                11, 11, 11];
+  //Hide SVG is player name is not 'x' or 'o' and replace with prompted name
+
 }
 
 Player.prototype.activate = function() { //Delect these two in favor of the switch prototype?

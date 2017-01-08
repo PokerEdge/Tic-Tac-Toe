@@ -106,6 +106,20 @@ h1 {
   }
   #player1.active svg g, #player2.active svg g {
     fill: #fff; }
+
+  #player1.players,
+  #player2.players
+   {
+    color: #c0c0c0;
+    font-size: 1.15em;
+  }
+  
+  #player1.active.players,
+  #player2.active.players
+   {
+    color: #fff;
+  }
+
   #player1.active {
     background: #FFA000; }
   #player2.active {
