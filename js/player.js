@@ -1,8 +1,6 @@
 function Player(name) {
   this.name = name;
-  var isActive = false;
-
-  //Hide SVG is player name is not 'x' or 'o' and replace with prompted name
+  this.isActive = false;
 
 }
 
@@ -36,10 +34,9 @@ Player.prototype.switchActive = function(){ //Could use toggleClass() to switch 
 
 };
 
-// player1 = new Player(player1Name); //Set player1 name to prompted NON NULL value
-// player2 = new Player(player2Name); //Set player2 name to prompted NON NULL value
 
+// //Instantiate player prototypes to bind click handlers for hover and for click effects on box.li
+//   //Bind function within the anonymous function of the player
+// Player.prototype.clickHandler = function(){}
 
-
-//Background text for x changes to player1.name;
-//Background text for o changes to player2.name;
+// Player.prototype.hoverHandler = function(){}

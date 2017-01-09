@@ -1,7 +1,7 @@
 $('#board').hide();
 $('#finish').hide();
 
-//BIND EVENTS INSIDE OF NEWGAME()
+//BIND EVENTS INSIDE OF NEWGAME() as a prototype
 
 //Show refreshed tic-tac-toe board on button click 
 $('.button').click(function newGame() {
@@ -68,115 +68,184 @@ $('.button').click(function newGame() {
 
   }
 
-  // if(player1.isActive){
-  //   $('#player1').addClass('active');
-  //   $('#player2').removeClass('active');
-  // } else {
-  //   $('#player2').addClass('active');
-  //   $('#player1').removeClass('active');
-  // }
-  //Set active player's background color to high opacity and inactive player's background to zero opacity or white
+    //Hover event handler: functions that fire on mouse on and on mouse off
+    //FIND HOVERED BOX INDEX TO MAKE IT FULL ON CLICK... handler within handler?
+  $('li.box').hover(function() {
 
-});
-
-//Display win screen with particular conditions (mixmax logic)
-function ticTacToe() {
-  //Determine if the game has been won
-    //Determine who has won the game
-      //Show winning screen with winning player's name and color
-
-
-  //Determine if the game is tied
-    //Show tied game screen and text
-
-}
-
-//Hover event handler: functions that fire on mouse on and on mouse off
-  //FIND HOVERED BOX INDEX TO MAKE IT FULL ON CLICK... handler within handler?
-$('li.box').hover(function() {
-
-  //Check for which player hasClass active AND if square is enabled (not disabled)
-  if($('#player1').hasClass('active')){
-
-    if(!$(this).hasClass('box-filled-1') && !$(this).hasClass('box-filled-2')){
-
-      $(this).addClass('box-filled-1');
-
-    }
-  }
-
-  if($('#player2').hasClass('active')){
-  //  if(player2.isActive){
-
-    if(!$(this).hasClass('box-filled-1') && !$(this).hasClass('box-filled-2')){
-
-      $(this).addClass('box-filled-2');
-
-    }
-  }
+    //HOVER BACKGROUND COLOR SHOULD BE GREY, NOT THE COLOR OF THE ACTIVE PLAYER
       //Display active class player's symbol with a lower opacity while mouse is over
-        //$(this).animate();
-},
-    //remove() active player's symbole and hover effects when mouse is NOT over
-
-  function() {
-    
-    $(this).removeClass('box-filled-1').removeClass('box-filled-2');
-
-  }
-);
-
-//Fill a square with the active player's symbol on click
-  //Square is then disabled for the remainder of the game
-
-  //BUG THAT ALLOWS PLAYER 2 TO CLICK ON SQUARES WHICH PLAYER 1 OCCUPIES
-
-$('li.box').click(function() {
-
-  //Toggle active class between players - change boolean in constructor here  //currentPlayer.switchActive();
-  
-  if($('#player1').hasClass('active')){ //ALSO CHECK IF BOX IS EMPTY
-
-    //Add CSS animation to the addClass effect of 'adding' the SVG
-    if(!$(this).hasClass('box-filled-2')){ //NECESSARY?
-  
-      $(this).addClass('box-filled-1');
-
-      //Add CSS animation to the addClass effect of 'adding' the SVG
-      $('#player2').addClass('active');
-      $('#player1').removeClass('active'); //Make this part of a prototype somehow (isActive?)
+            //$(this).animate();
 
 
-      //Unbind hover event handler from 'this' box
-      $(this).off('mouseenter mouseleave');
-      $(this).off('click');
+    //Check for which player hasClass active AND if square is enabled (not disabled)
+    if($('#player1').hasClass('active')){
+
+      if(!$(this).hasClass('box-filled-1') && !$(this).hasClass('box-filled-2')){
+
+        $(this).addClass('box-filled-1');
+
+      }
+    }
+
+    if($('#player2').hasClass('active')){
+    //  if(player2.isActive){
+
+      if(!$(this).hasClass('box-filled-1') && !$(this).hasClass('box-filled-2')){
+
+        $(this).addClass('box-filled-2');
+
+      }
+    }
+  },
+      //remove() active player's symbol and hover effects when mouse is NOT over
+
+    function() {
       
-      return isGameWon();
+      $(this).removeClass('box-filled-1').removeClass('box-filled-2');
 
     }
-  }
+  );
 
-  if($('#player2').hasClass('active')){ //ALSO CHECK IF BOX IS EMPTY
+  //Fill a square with the active player's symbol on click
+    //Square is then disabled for the remainder of the game
+
+  $('li.box').click(function() {
+
+    //Toggle active class between players - change boolean in constructor here  //currentPlayer.switchActive();
     
-    // $(this).removeClass('box-filled-1');
-
-    //Add CSS animation to the addClass effect of 'adding' the SVG
-    if(!$(this).hasClass('box-filled-1')){
-      
-      $(this).addClass('box-filled-2');
+    if($('#player1').hasClass('active')){ //ALSO CHECK IF BOX IS EMPTY
 
       //Add CSS animation to the addClass effect of 'adding' the SVG
-      $('#player1').addClass('active');
-      $('#player2').removeClass('active');
+      if(!$(this).hasClass('box-filled-2')){ //NECESSARY?
+    
+        $(this).addClass('box-filled-1');
 
-      //Unbind hover event handler from 'this' box
-      $(this).off('mouseenter mouseleave');
-      $(this).off('click');
-      
-      return isGameWon();
+        //Add CSS animation to the addClass effect of 'adding' the SVG
+        $('#player2').addClass('active');
+        $('#player1').removeClass('active'); //Make this part of a prototype somehow (isActive?)
+
+
+        //Unbind hover event handler from 'this' box
+        $(this).off('mouseenter mouseleave');
+        $(this).off('click');
+        
+        return isGameWon();
+
+      }
     }
-  }
+
+    if($('#player2').hasClass('active')){ //ALSO CHECK IF BOX IS EMPTY
+      
+      // $(this).removeClass('box-filled-1');
+
+      //Add CSS animation to the addClass effect of 'adding' the SVG
+      if(!$(this).hasClass('box-filled-1')){
+        
+        $(this).addClass('box-filled-2');
+
+        //Add CSS animation to the addClass effect of 'adding' the SVG
+        $('#player1').addClass('active');
+        $('#player2').removeClass('active');
+
+        //Unbind hover event handler from 'this' box
+        $(this).off('mouseenter mouseleave');
+        $(this).off('click');
+        
+        return isGameWon();
+      }
+    }
+  });
+
 });
+
+
+// //Hover event handler: functions that fire on mouse on and on mouse off
+//   //FIND HOVERED BOX INDEX TO MAKE IT FULL ON CLICK... handler within handler?
+// $('li.box').hover(function() {
+
+//   //HOVER BACKGROUND COLOR SHOULD BE GREY, NOT THE COLOR OF THE ACTIVE PLAYER
+//     //Display active class player's symbol with a lower opacity while mouse is over
+//           //$(this).animate();
+
+
+//   //Check for which player hasClass active AND if square is enabled (not disabled)
+//   if($('#player1').hasClass('active')){
+
+//     if(!$(this).hasClass('box-filled-1') && !$(this).hasClass('box-filled-2')){
+
+//       $(this).addClass('box-filled-1');
+
+//     }
+//   }
+
+//   if($('#player2').hasClass('active')){
+//   //  if(player2.isActive){
+
+//     if(!$(this).hasClass('box-filled-1') && !$(this).hasClass('box-filled-2')){
+
+//       $(this).addClass('box-filled-2');
+
+//     }
+//   }
+// },
+//     //remove() active player's symbol and hover effects when mouse is NOT over
+
+//   function() {
+    
+//     $(this).removeClass('box-filled-1').removeClass('box-filled-2');
+
+//   }
+// );
+
+// //Fill a square with the active player's symbol on click
+//   //Square is then disabled for the remainder of the game
+
+// $('li.box').click(function() {
+
+//   //Toggle active class between players - change boolean in constructor here  //currentPlayer.switchActive();
+  
+//   if($('#player1').hasClass('active')){ //ALSO CHECK IF BOX IS EMPTY
+
+//     //Add CSS animation to the addClass effect of 'adding' the SVG
+//     if(!$(this).hasClass('box-filled-2')){ //NECESSARY?
+  
+//       $(this).addClass('box-filled-1');
+
+//       //Add CSS animation to the addClass effect of 'adding' the SVG
+//       $('#player2').addClass('active');
+//       $('#player1').removeClass('active'); //Make this part of a prototype somehow (isActive?)
+
+
+//       //Unbind hover event handler from 'this' box
+//       $(this).off('mouseenter mouseleave');
+//       $(this).off('click');
+      
+//       return isGameWon();
+
+//     }
+//   }
+
+//   if($('#player2').hasClass('active')){ //ALSO CHECK IF BOX IS EMPTY
+    
+//     // $(this).removeClass('box-filled-1');
+
+//     //Add CSS animation to the addClass effect of 'adding' the SVG
+//     if(!$(this).hasClass('box-filled-1')){
+      
+//       $(this).addClass('box-filled-2');
+
+//       //Add CSS animation to the addClass effect of 'adding' the SVG
+//       $('#player1').addClass('active');
+//       $('#player2').removeClass('active');
+
+//       //Unbind hover event handler from 'this' box
+//       $(this).off('mouseenter mouseleave');
+//       $(this).off('click');
+      
+//       return isGameWon();
+//     }
+//   }
+// });
 
 
 // function fillSquare(){
@@ -224,7 +293,6 @@ function isGameWon(){
           ($('.boxes').children().eq(0).hasClass('box-filled-1') && $('.boxes').children().eq(1).hasClass('box-filled-1') && $('.boxes').children().eq(2).hasClass('box-filled-1')) || 
           ($('.boxes').children().eq(0).hasClass('box-filled-2') && $('.boxes').children().eq(1).hasClass('box-filled-2') && $('.boxes').children().eq(2).hasClass('box-filled-2'))){
             //Show win screen with activePlayer, player who just clicked, as winner
-              //return displayWinScreen(activePlayer);
               return displayFinish(player1.name) + console.log("Row 1 has 3 in a row");
         }
       }
@@ -240,7 +308,6 @@ function isGameWon(){
           ($('.boxes').children().eq(3).hasClass('box-filled-1') && $('.boxes').children().eq(4).hasClass('box-filled-1') && $('.boxes').children().eq(5).hasClass('box-filled-1')) || 
           ($('.boxes').children().eq(3).hasClass('box-filled-2') && $('.boxes').children().eq(4).hasClass('box-filled-2') && $('.boxes').children().eq(5).hasClass('box-filled-2'))){
             //Show win screen with activePlayer, player who just clicked, as winner
-              //return displayWinScreen(activePlayer);
               return displayFinish(player1.name) + console.log("Row 2 has 3 in a row");
         }
       }
@@ -256,7 +323,6 @@ function isGameWon(){
           ($('.boxes').children().eq(6).hasClass('box-filled-1') && $('.boxes').children().eq(7).hasClass('box-filled-1') && $('.boxes').children().eq(8).hasClass('box-filled-1')) || 
           ($('.boxes').children().eq(6).hasClass('box-filled-2') && $('.boxes').children().eq(7).hasClass('box-filled-2') && $('.boxes').children().eq(8).hasClass('box-filled-2'))){
             //Show win screen with activePlayer, player who just clicked, as winner
-              //return displayWinScreen(activePlayer);
               return displayFinish(player1.name) + console.log("Row 3 has 3 in a row");
 
         }
@@ -273,7 +339,6 @@ function isGameWon(){
           ($('.boxes').children().eq(0).hasClass('box-filled-1') && $('.boxes').children().eq(3).hasClass('box-filled-1') && $('.boxes').children().eq(6).hasClass('box-filled-1')) || 
           ($('.boxes').children().eq(0).hasClass('box-filled-2') && $('.boxes').children().eq(3).hasClass('box-filled-2') && $('.boxes').children().eq(6).hasClass('box-filled-2'))){
             //Show win screen with activePlayer, player who just clicked, as winner
-              //return displayWinScreen(activePlayer);
               return displayFinish(player1.name) + console.log("Col 1 has 3 in a row");
 
         }
@@ -290,7 +355,6 @@ function isGameWon(){
           ($('.boxes').children().eq(1).hasClass('box-filled-1') && $('.boxes').children().eq(4).hasClass('box-filled-1') && $('.boxes').children().eq(7).hasClass('box-filled-1')) || 
           ($('.boxes').children().eq(1).hasClass('box-filled-2') && $('.boxes').children().eq(4).hasClass('box-filled-2') && $('.boxes').children().eq(7).hasClass('box-filled-2'))){
             //Show win screen with activePlayer, player who just clicked, as winner
-              //return displayWinScreen(activePlayer);
               return displayFinish(player1.name) + console.log("Col 2 has 3 in a row");
 
         }
@@ -307,7 +371,6 @@ function isGameWon(){
           ($('.boxes').children().eq(2).hasClass('box-filled-1') && $('.boxes').children().eq(5).hasClass('box-filled-1') && $('.boxes').children().eq(8).hasClass('box-filled-1')) || 
           ($('.boxes').children().eq(2).hasClass('box-filled-2') && $('.boxes').children().eq(5).hasClass('box-filled-2') && $('.boxes').children().eq(8).hasClass('box-filled-2'))){
             //Show win screen with activePlayer, player who just clicked, as winner
-              //return displayWinScreen(activePlayer);
               return displayFinish(player1.name) + console.log("Col 3 has 3 in a row");
 
         }
@@ -324,7 +387,6 @@ function isGameWon(){
           ($('.boxes').children().eq(0).hasClass('box-filled-1') && $('.boxes').children().eq(4).hasClass('box-filled-1') && $('.boxes').children().eq(8).hasClass('box-filled-1')) || 
           ($('.boxes').children().eq(0).hasClass('box-filled-2') && $('.boxes').children().eq(4).hasClass('box-filled-2') && $('.boxes').children().eq(8).hasClass('box-filled-2'))){
             //Show win screen with activePlayer, player who just clicked, as winner
-              //return displayWinScreen(activePlayer);
               return displayFinish(player1.name) + console.log("Diagonal 1 has 3 in a row");
 
         }
@@ -341,11 +403,30 @@ function isGameWon(){
           ($('.boxes').children().eq(2).hasClass('box-filled-1') && $('.boxes').children().eq(4).hasClass('box-filled-1') && $('.boxes').children().eq(6).hasClass('box-filled-1')) || 
           ($('.boxes').children().eq(2).hasClass('box-filled-2') && $('.boxes').children().eq(4).hasClass('box-filled-2') && $('.boxes').children().eq(6).hasClass('box-filled-2'))){
             //Show win screen with activePlayer, player who just clicked, as winner
-              //return displayWinScreen(activePlayer);
+              //RETURN DISPLAYFINISH(ACTIVEPLAYER);
               return displayFinish(player1.name) + console.log("Diagonal 2 has 3 in a row");
 
         }
       }
+
+      // //Check if game ends in a tie
+      // symbolCount = 0;
+
+      // for(var tie = 0; tie < 9; tie++){
+        
+      //   symbolCount++;
+        
+      //   //Check if all boxes have a class (none are empty)
+      //   if(symbolCount === 9 && 
+      //     ($('.boxes').children().eq(2).hasClass('box-filled-1') && $('.boxes').children().eq(4).hasClass('box-filled-1') && $('.boxes').children().eq(6).hasClass('box-filled-1') ) || 
+      //     ($('.boxes').children().eq(2).hasClass('box-filled-2') && $('.boxes').children().eq(4).hasClass('box-filled-2') && $('.boxes').children().eq(6).hasClass('box-filled-2'))){
+      //       //Show win screen with activePlayer, player who just clicked, as winner
+      //         //RETURN DISPLAYFINISH(ACTIVEPLAYER);
+      //         return displayFinish(player1.name) + console.log("Game is tied!");
+
+      //   }
+      // }
+
     }
   }
 }
@@ -356,9 +437,22 @@ function displayFinish(winningPlayer){
   $('div#board').hide();  
   $('div#finish').show();
 
-  $('#finish').removeClass('screen-win').removeClass('screen-win-one').removeClass('screen-win-two').removeClass('screen-win-tie');
+  $('#finish').removeClass('screen-win-one').removeClass('screen-win-two').removeClass('screen-win-tie');
 
   
+  // <div class="screen screen-win" id="finish">
+    
+  //   <header>
+      
+  //     <h1>Tic Tac Toe</h1>
+  //     <p class="message"></p>
+  //     <a href="#" class="button">New game</a>
+    
+  //   </header>
+
+  // </div>
+
+
   // .screen-win p {
   //   font-size: 6em;
   //   font-weight: 700;
@@ -381,6 +475,15 @@ function displayFinish(winningPlayer){
     
     $('#finish').addClass('screen-win-one');
 
+    $('p.message').html("Winner");
+
+    //Edit 'message' to show player 1 win message
+      //Show "o" or show non-player1.name
+
+
+    //Edit button text color to be the losing players color (not active player)
+
+
     //   .screen-win-one {
     //     background: #FFA000; }
 
@@ -399,6 +502,15 @@ function displayFinish(winningPlayer){
 
     $('#finish').addClass('screen-win-two');
 
+    $('p.message').html("Winner");
+
+    //Edit 'message' to show player 2 win message
+      //Show "x" or show non-player2.name
+
+
+    //Edit button text color to be the losing players color (not active player)
+
+
     // .screen-win-two {
     //   background: #3688C3; }
 
@@ -416,6 +528,14 @@ function displayFinish(winningPlayer){
   if(winningPlayer !== player1.name && winningPlayer !== player2.name){
   
     $('#finish').addClass('screen-win-tie');
+
+    $('p.message').html("It's a Tie!");
+
+    //Edit 'message' to show player 1 win message
+      //Show "It's a Tie!" as message
+
+    //Edit button text color to be a neutral color, like the green on the starting page  
+
 
     // .screen-win-tie {
     //   background: #54D17A; }

@@ -71,6 +71,7 @@ h1 {
     .screen-win-one .button {
       color: #3688C3; }
     .screen-win-one p:before {
+      /*content: url(../img/o.svg);*/
       content: "o";
       top: 1.75rem; }
   .screen-win-two {
