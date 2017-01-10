@@ -152,5 +152,8 @@ h1 {
     .boxes .box-filled-2 {
       background-color: #3688C3;
       background-image: url(../img/x.svg); }
+/*     .boxes .box-filled-1:hover,
+     .boxes .box-filled-2:hover { background-color: #efefef; }*/
+
 
 /* Animate box background color - hover effect is handled with JS - background color is light grey on hover */

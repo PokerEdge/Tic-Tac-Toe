@@ -4,6 +4,7 @@ $('#finish').hide();
 //Show initialized a new tic-tac-toe game on button click 
 $('.button').click(function newGame() {
   
+  $('li.box').css('background-color', '#efefef');
   $('div#start').hide();
   $('div#finish').hide();
   $('div#board').show();
@@ -58,10 +59,9 @@ $('.button').click(function newGame() {
   //Hover event handler: functions that fire on mouse on and on mouse off
   $('li.box').hover(function() {
 
-    //HOVER BACKGROUND COLOR SHOULD BE GREY, NOT THE COLOR OF THE ACTIVE PLAYER
-    // $('li.box').css('opacity', '1');
-      //Display active class player's symbol with a lower opacity while mouse is over
-            //$(this).animate();
+    //Hover background color is grey prior to click
+    $(this).css('background-color', '#efefef');
+
 
 
     //Check for which player hasClass active AND if square is enabled (not disabled)
@@ -95,14 +95,14 @@ $('.button').click(function newGame() {
     //Square is then disabled for the remainder of the game
   $('li.box').click(function() {
     
-    var activePlayer = "";
+    var activePlayer = "";  
 
     if($('#player1').hasClass('active')){
 
       if(!$(this).hasClass('box-filled-2')){
     
         $(this).addClass('box-filled-1');
-
+        $(this).css('background-color', '#FFA000');
         $('#player2').addClass('active');
         $('#player1').removeClass('active'); //Make this part of a prototype somehow (isActive?)
 
@@ -116,13 +116,12 @@ $('.button').click(function newGame() {
       }
     }
 
-    if($('#player2').hasClass('active')){ //ALSO CHECK IF BOX IS EMPTY
+    if($('#player2').hasClass('active')){
       
       if(!$(this).hasClass('box-filled-1')){
         
         $(this).addClass('box-filled-2');
-
-        //Add CSS animation to the addClass effect of 'adding' the SVG
+        $(this).css('background-color', '#3688C3'); 
         $('#player1').addClass('active');
         $('#player2').removeClass('active');
 
@@ -133,7 +132,7 @@ $('.button').click(function newGame() {
         $(this).off('mouseenter mouseleave');
         $(this).off('click');
         
-        return isGameWon(activePlayer); //By active player (by player that hasClass 'active')
+        return isGameWon(activePlayer);
       }
     }
   });
