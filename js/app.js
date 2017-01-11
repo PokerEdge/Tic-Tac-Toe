@@ -203,22 +203,22 @@ function isGameWon(activePlayer) {
             //Show win screen with activePlayer, player who just clicked, as winner
             return displayFinish(activePlayer);
       }
+    
+      //Check if game has ended in a tie, and if so, display the appropriate finish screen
+      if(  ($('.boxes').children().eq(0).hasClass('box-filled-1') || $('.boxes').children().eq(0).hasClass('box-filled-2')) 
+        && ($('.boxes').children().eq(1).hasClass('box-filled-1') || $('.boxes').children().eq(1).hasClass('box-filled-2')) 
+        && ($('.boxes').children().eq(2).hasClass('box-filled-1') || $('.boxes').children().eq(2).hasClass('box-filled-2')) 
+        && ($('.boxes').children().eq(3).hasClass('box-filled-1') || $('.boxes').children().eq(3).hasClass('box-filled-2')) 
+        && ($('.boxes').children().eq(4).hasClass('box-filled-1') || $('.boxes').children().eq(4).hasClass('box-filled-2')) 
+        && ($('.boxes').children().eq(5).hasClass('box-filled-1') || $('.boxes').children().eq(5).hasClass('box-filled-2')) 
+        && ($('.boxes').children().eq(6).hasClass('box-filled-1') || $('.boxes').children().eq(6).hasClass('box-filled-2')) 
+        && ($('.boxes').children().eq(7).hasClass('box-filled-1') || $('.boxes').children().eq(7).hasClass('box-filled-2')) 
+        && ($('.boxes').children().eq(8).hasClass('box-filled-1') || $('.boxes').children().eq(8).hasClass('box-filled-2'))){
+
+          return displayFinish();
+
+      }
     }
-
-  //Check if game has ended in a tie, and if so, display the appropriate finish screen
-  if(  ($('.boxes').children().eq(0).hasClass('box-filled-1') || $('.boxes').children().eq(0).hasClass('box-filled-2')) 
-    && ($('.boxes').children().eq(1).hasClass('box-filled-1') || $('.boxes').children().eq(1).hasClass('box-filled-2')) 
-    && ($('.boxes').children().eq(2).hasClass('box-filled-1') || $('.boxes').children().eq(2).hasClass('box-filled-2')) 
-    && ($('.boxes').children().eq(3).hasClass('box-filled-1') || $('.boxes').children().eq(3).hasClass('box-filled-2')) 
-    && ($('.boxes').children().eq(4).hasClass('box-filled-1') || $('.boxes').children().eq(4).hasClass('box-filled-2')) 
-    && ($('.boxes').children().eq(5).hasClass('box-filled-1') || $('.boxes').children().eq(5).hasClass('box-filled-2')) 
-    && ($('.boxes').children().eq(6).hasClass('box-filled-1') || $('.boxes').children().eq(6).hasClass('box-filled-2')) 
-    && ($('.boxes').children().eq(7).hasClass('box-filled-1') || $('.boxes').children().eq(7).hasClass('box-filled-2')) 
-    && ($('.boxes').children().eq(8).hasClass('box-filled-1') || $('.boxes').children().eq(8).hasClass('box-filled-2'))){
-
-      return displayFinish();
-
-  }
 }
 
 //With the argument of the winning player, the appropriate board is displayed at the game's conclusion
