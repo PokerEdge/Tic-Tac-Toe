@@ -2,15 +2,36 @@
 
 (function(){
 
-  var Player = {
+  var gameUI = {
 
     init: function() {
-      this.name = name;
-      this.symbol = symbol;
-      this.box = $('li.box');
-      this.boxfiller();
-      this.bindEvents();
-      this.squares;
+      // this.name = name;
+      // this.symbol = symbol;
+      // this.box = $('li.box');
+      // this.boxfiller();
+      // this.bindEvents();
+      // this.squares;
+
+      $('.button').click(function newGame() {
+        
+        //Reset the background colors from any previously played games
+        $('li.box').css('background-color', '#efefef');
+        
+        //Remove symbol elements form a board of any size
+        $('.boxes').children().each().removeClass('box-filled-1').removeClass('box-filled-2');
+        
+        
+        $('div#start').hide();
+        $('div#finish').hide();
+        $('div#board').show();
+
+        //Set player name based on user input
+        var player1Name = prompt("What's player 1's name?") || "o";
+        var player2Name = prompt("What's player 2's name?") || "x";
+
+        player1 = new Player(player1Name);
+        player2 = new Player(player2Name);
+      })
     },
 
 
@@ -60,14 +81,14 @@
 
   }
 
-  //Set player name based on user input or to a unique tic-tac-toe symbol
-  var player1Name = prompt("What's player 1's name?") || "o";
-  var player2Name = prompt("What's player 2's name?") || "x";
+  // //Set player name based on user input or to a unique tic-tac-toe symbol
+  // var player1Name = prompt("What's player 1's name?") || "o";
+  // var player2Name = prompt("What's player 2's name?") || "x";
 
-  player1 = new Player(player1Name);
-  player2 = new Player(player2Name);
+  // player1 = new Player(player1Name);
+  // player2 = new Player(player2Name);
 
-  Player.init();
+  gameUI.init();
 
 })();
 
